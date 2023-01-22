@@ -1,16 +1,4 @@
-import lib/[common, 
-            data, 
-            edge, 
-            endpoint, 
-            graph, 
-            graphmlobj, 
-            hyperedge, 
-            key, 
-            locator, 
-            node, 
-            xml, 
-            xmltree2]
-
+import graphml
 import std/logging
 
 proc main =
