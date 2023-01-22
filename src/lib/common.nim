@@ -96,7 +96,7 @@ converter toAttributesSeq*(attribs:AttributesTyp):seq[tuple[key,val:string]] =
     result &= (k,v)
 
 
-proc `[]=`*[T:GraphMlObj|NodeObj](obj:var T; key,value:string) =
+proc `[]=`*[T:GraphMlObj|NodeObj|KeyObj](obj:var T; key,value:string) =
   obj.attributes[key] = value
 
 # proc `[]=`*(obj:var NodeObj; key,value:string) =

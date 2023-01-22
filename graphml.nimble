@@ -1,6 +1,6 @@
 # Package
 
-version       = "0.1"
+version       = "0.1.1"
 author        = "Jose Maria Garcia"
 description   = "graphml creator"
 license       = "MIT"
