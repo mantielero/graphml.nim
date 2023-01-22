@@ -60,7 +60,6 @@ proc addNode(o:var XmlNode; obj: NodeObj) =
   o.add xml
 
 
-
 proc addEndpoint(o:var XmlNode; obj: EndpointObj) =
   var xml = newXmlTree("endpoint", [], obj.attributes.toAttributesSeq.toXmlAttributes)
   if obj.description != "":
@@ -124,14 +123,11 @@ proc addGraph(o:var XmlNode; obj: GraphObj) =
 
   o.add xml
 
-
-
-proc `$`*(o:GraphMlObj):string =
-  result = xmlHeader
-  var root = newXmlTree("graphml", [], o.attributes.toAttributesSeq.toXmlAttributes)
+proc toXml*(o:GraphMlObj):XmlNode =
+  result = newXmlTree("graphml", [], o.attributes.toAttributesSeq.toXmlAttributes)
   # Add graphml description
   if o.description != "":
-    root.addDescription(o.description)
+    result.addDescription(o.description)
 
   # Add the keys
   for k in o.keys:
@@ -140,16 +136,43 @@ proc `$`*(o:GraphMlObj):string =
       key.addDescription(k.description)
     if k.default != "":
       key.addDefault(k.default)
-    root.add key 
+    result.add key 
   
   
   case o.kind:
   of gkGraph: # Add the graphs
     for graph in o.graphs:
-      root.addGraph( graph )
+      result.addGraph( graph )
 
   of gkData:  # Add the data
     for data in o.datas:
-      root.addData( data )
+      result.addData( data )  
 
-  result &= $root
+proc `$`*(o:GraphMlObj):string =
+  result = xmlHeader
+
+  # var root = newXmlTree("graphml", [], o.attributes.toAttributesSeq.toXmlAttributes)
+  # # Add graphml description
+  # if o.description != "":
+  #   root.addDescription(o.description)
+
+  # # Add the keys
+  # for k in o.keys:
+  #   var key = newXmlTree("key", [], k.attributes.toAttributesSeq.toXmlAttributes)
+  #   if k.description != "":
+  #     key.addDescription(k.description)
+  #   if k.default != "":
+  #     key.addDefault(k.default)
+  #   root.add key 
+  
+  
+  # case o.kind:
+  # of gkGraph: # Add the graphs
+  #   for graph in o.graphs:
+  #     root.addGraph( graph )
+
+  # of gkData:  # Add the data
+  #   for data in o.datas:
+  #     root.addData( data )
+
+  result &= $o.toXml
