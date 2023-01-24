@@ -4,21 +4,21 @@ import std/[tables, options]
 type
   AttributesTyp* = Table[string, string]
 
-  LocatorObj* = object of RootObj
+  LocatorObj* = ref object of RootObj
     attributes*:AttributesTyp
 
-  EndPointObj* = object of RootObj
+  EndPointObj* = ref object of RootObj
     attributes*:AttributesTyp
     description*:string # optional
 
-  DataObj* = object of RootObj
+  DataObj* = ref object of RootObj
     #desc?, default?
     attributes*:AttributesTyp
     value*: string
     #description*: string  # Optional
     #default*:string       # Optional
 
-  KeyObj* = object of RootObj
+  KeyObj* = ref object of RootObj
     #desc?, default?
     attributes*:AttributesTyp
     description*: string  # Optional
@@ -26,14 +26,14 @@ type
 
 
 
-  PortObj* = object of RootObj
+  PortObj* = ref object of RootObj
     #desc?, ( data | port )*
     attributes*:AttributesTyp
     description*: string  # Optional
     datas*:seq[DataObj]
     ports*:seq[PortObj]
 
-  NodeObj* = object of RootObj
+  NodeObj* = ref object of RootObj
     #desc?, ( ( data | port )*, graph? | locator )
     attributes*:AttributesTyp
     #value*: string
@@ -69,7 +69,7 @@ type
     graph*: Option[GraphObj]   # Optional
 
 
-  HyperEdgeObj* = object of RootObj
+  HyperEdgeObj* = ref object of RootObj
     #desc?, ( data | endpoint )*, graph?
     attributes*:AttributesTyp
     description*: string  # Optional
@@ -80,7 +80,7 @@ type
 
   GraphMlKind* = enum
     gkGraph, gkData
-  GraphMlObj* = object of RootObj
+  GraphMlObj* = ref object of RootObj
     #desc?, key*, ( graph | data )*
     attributes*:AttributesTyp
     description*: string
