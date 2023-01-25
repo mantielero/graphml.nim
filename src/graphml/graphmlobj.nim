@@ -9,10 +9,10 @@ proc newGraphMl*(isData:bool = false):GraphMlObj =
     return GraphMlObj(kind: gkData)
   return GraphMlObj(kind: gkGraph)
 
-proc setDescription*(g:var GraphMlObj; description: string ) =
+method setDescription*(g: GraphMlObj; description: string ) =
   g.description = description
 
-proc add*(g:var GraphMlObj; obj: KeyObj) =
+method add*(g: GraphMlObj; obj: KeyObj) =
   if "id" in obj.attributes:
     for k in g.keys:
       if k.attributes["id"] == obj.attributes["id"]:
@@ -20,7 +20,7 @@ proc add*(g:var GraphMlObj; obj: KeyObj) =
         quit(1)
   g.keys &= obj
 
-proc add*(g:var GraphMlObj; obj: GraphObj) =
+method add*(g: GraphMlObj; obj: GraphObj) =
   if "id" in obj.attributes:
     for o in g.graphs:
       if o.attributes["id"] == obj.attributes["id"]:

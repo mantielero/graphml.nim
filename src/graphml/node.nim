@@ -6,7 +6,7 @@ import common#, data
 
 
 
-proc setId*(node:var NodeObj; id: string) =
+method setId*(node:NodeObj; id: string) =
   node.attributes["id"] = id
 
 
@@ -17,16 +17,16 @@ proc newNode*(id:string = ""; isLocator:bool = false):NodeObj =
   if id != "":
     result.setId(id)
  
-proc setInDegree*(node:var NodeObj; inDegree: int) =
+method setInDegree*(node:NodeObj; inDegree: int) =
   node.attributes["parse.indegree"] = $inDegree
 
-proc setOutDegree*(node:var NodeObj; outDegree: int) =
+method setOutDegree*(node:NodeObj; outDegree: int) =
   node.attributes["parse.outdegree"] = $outDegree
 
-proc setDescription*[T:NodeObj](obj:var T; description:string ) =
+method setDescription*[T:NodeObj](obj:T; description:string ) =
   obj.description = description
 
-proc add*(node:var NodeObj; data: DataObj ) =
+method add*(node:NodeObj; data: DataObj ) =
   node.datas &= data
 
 #proc setUrl*(node:var NodeObj; url: string) =

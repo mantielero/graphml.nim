@@ -25,7 +25,6 @@ type
     default*:string       # Optional
 
 
-
   PortObj* = ref object of RootObj
     #desc?, ( data | port )*
     attributes*:AttributesTyp

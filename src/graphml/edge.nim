@@ -4,15 +4,13 @@ import common, data, graph
 
 
 
-
-
-proc setSource*(edge:var EdgeObj; source: string) =
+method setSource*(edge:EdgeObj; source: string) =
   edge.attributes["source"] = source
 
-proc setTarget*(edge:var EdgeObj; target: string) =
+method setTarget*(edge:EdgeObj; target: string) =
   edge.attributes["target"] = target
 
-proc setId*(edge:var EdgeObj; id: string) =
+method setId*(edge:EdgeObj; id: string) =
   ## optional
   edge.attributes["id"] = id
 
@@ -21,19 +19,19 @@ proc newEdge*(source, target: string):EdgeObj =
   result.setSource(source)
   result.setTarget(target)
 
-proc setDirected*(edge:var EdgeObj) =
+method setDirected*(edge:EdgeObj) =
   ## optional
   edge.attributes["directed"] = "true"
 
-proc setDescription*(edge: var EdgeObj; description: string) =
+method setDescription*(edge: EdgeObj; description: string) =
   edge.description = description
 
 
-proc setSourcePort*(edge:var EdgeObj; sourcePort:string) =
+method setSourcePort*(edge: EdgeObj; sourcePort:string) =
   ## optional
   edge.attributes["sourceport"] = sourcePort
 
-proc setTargetPort*(edge:var EdgeObj; targetPort:string) =
+method setTargetPort*(edge: EdgeObj; targetPort:string) =
   ## optional
   edge.attributes["targetport"] = targetPort
 
@@ -45,5 +43,5 @@ proc setTargetPort*(edge:var EdgeObj; targetPort:string) =
 # when isMainModule:
 #   var root = DataObj()
 
-proc add*(graph: var EdgeObj; data: DataObj) =
+method add*(graph: EdgeObj; data: DataObj) =
   graph.datas &= data

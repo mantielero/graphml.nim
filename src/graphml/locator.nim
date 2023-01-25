@@ -5,7 +5,7 @@ import common#, data
 
 
 
-proc setRef*(locator:var LocatorObj; href: string) =
+method setRef*(locator:LocatorObj; href: string) =
   ## optional
   locator.attributes["xlink:href"] = href
 

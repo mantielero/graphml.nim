@@ -5,12 +5,12 @@ import common, data
 
 
 
-proc setId*(hyperedge:var HyperEdgeObj; id: string) =
+method setId*(hyperedge: HyperEdgeObj; id: string) =
   ## optional
   hyperedge.attributes["id"] = id
 
 
-proc setDescription*(edge: var HyperEdgeObj; description: string) =
+method setDescription*(edge: HyperEdgeObj; description: string) =
   edge.description = description
 
 

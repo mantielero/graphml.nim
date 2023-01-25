@@ -3,13 +3,13 @@ import std/[tables]
 import common
 
 
-proc setId*(graph:var GraphObj, value:string) =
+method setId*(graph:GraphObj, value:string) =
   graph.attributes["id"] = value
 
-proc setDirected*(graph:var GraphObj) =
+method setDirected*(graph:GraphObj) =
   graph.attributes["edgedefault"] = "directed"
 
-proc setUndirected*(graph:var GraphObj) =
+method setUndirected*(graph:GraphObj) =
   graph.attributes["edgedefault"] = "undirected"
 
 
@@ -26,8 +26,8 @@ proc newGraphUndirected*(id:string = ""; isLocator:bool = false):GraphObj =
     result.setId(id)
 
 
-proc add*(graph: var GraphObj; obj: NodeObj) =
+method add*(graph: GraphObj; obj: NodeObj) =
   graph.nodes &= obj
 
-proc add*(graph: var GraphObj; obj: EdgeObj) =  
+method add*(graph: GraphObj; obj: EdgeObj) =  
   graph.edges &= obj

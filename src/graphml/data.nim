@@ -4,7 +4,7 @@ import common
 
 
 
-proc setKey*(data:var DataObj; key: string) =
+method setKey*(data:DataObj; key: string) =
   data.attributes["key"] = key
 
 
@@ -13,9 +13,9 @@ proc newData*(key:string = ""):DataObj =
   if key != "":
     result.setKey(key)
 
-proc set*(data:var DataObj; value: string) =
+method set*(data:DataObj; value: string) =
   data.value = value
 
-proc set*(data:var DataObj; value: float) =
+method set*(data:DataObj; value: float) =
   data.value = $value
 

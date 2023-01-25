@@ -18,10 +18,14 @@ proc addLocator(o:var XmlNode; obj:LocatorObj) =
   o.add xml
 
 
-proc addData(o:var XmlNode; obj:DataObj) =
+method toXml*(obj:DataObj): XmlNode =
   var xml = newXmlTree("data", [], obj.attributes.toAttributesSeq.toXmlAttributes)
   if obj.value != "":
     xml.add newText(obj.value)
+  return xml
+
+method addData(o:var XmlNode; obj:DataObj) =
+  var xml = obj.toXml
   o.add xml
 
 proc addPort(o:var XmlNode; obj:PortObj) =
@@ -39,7 +43,8 @@ proc addPort(o:var XmlNode; obj:PortObj) =
 
 proc addGraph(o:var XmlNode; obj: GraphObj)
 
-proc addNode(o:var XmlNode; obj: NodeObj) =
+
+method toXml*(obj: NodeObj):XmlNode =
   var xml = newXmlTree("node", [], obj.attributes.toAttributesSeq.toXmlAttributes)
   if obj.description != "":
     xml.addDescription(obj.description)
@@ -56,7 +61,11 @@ proc addNode(o:var XmlNode; obj: NodeObj) =
 
     if obj.graph.isSome:
       xml.addGraph(obj.graph.get)
+  return xml
 
+
+method addNode*(o:var XmlNode; obj: NodeObj) =
+  var xml = obj.toXml
   o.add xml
 
 

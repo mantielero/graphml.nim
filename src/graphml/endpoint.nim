@@ -5,15 +5,15 @@ import common#, data
 
 
 
-proc setId*(endpoint:var EndPointObj; id: string) =
+method setId*(endpoint: EndPointObj; id: string) =
   ## optional
   endpoint.attributes["id"] = id
 
-proc setPort*(endpoint:var EndPointObj; port: string) =
+method setPort*(endpoint:EndPointObj; port: string) =
   ## optional
   endpoint.attributes["port"] = port
 
-proc setNode*(endpoint:var EndPointObj; node: string) =
+method setNode*(endpoint:EndPointObj; node: string) =
   ## optional
   endpoint.attributes["node"] = node
 
@@ -21,5 +21,5 @@ proc newEndpoint*(node:string):EndPointObj =
   result = EndPointObj()
   result.setNode(node)
 
-proc setDescription*(endpoint:var EndPointObj; description: string ) =
+method setDescription*(endpoint: EndPointObj; description: string ) =
   endpoint.description = description
