@@ -77,18 +77,18 @@ type
     graph*:Option[GraphObj]  # Optional
 
 
-  GraphMlKind* = enum
-    gkGraph, gkData
+  #GraphMlKind* = enum
+  #  gkGraph, gkData
   GraphMlObj* = ref object of RootObj
     #desc?, key*, ( graph | data )*
     attributes*:AttributesTyp
     description*: string
     keys*:seq[KeyObj]
-    case kind*:GraphMlKind:
-    of gkGraph:
-      graphs*:seq[GraphObj]
-    of gkData:
-      datas*:seq[DataObj]
+    #case kind*:GraphMlKind:
+    #of gkGraph:
+    graphs*:seq[GraphObj]
+    #of gkData:
+    datas*:seq[DataObj]
 
 converter toAttributesSeq*(attribs:AttributesTyp):seq[tuple[key,val:string]] =
   for (k,v) in attribs.pairs:

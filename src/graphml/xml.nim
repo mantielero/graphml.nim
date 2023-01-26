@@ -148,13 +148,13 @@ proc toXml*(o:GraphMlObj):XmlNode =
     result.add key 
   
   
-  case o.kind:
-  of gkGraph: # Add the graphs
-    for graph in o.graphs:
+  #case o.kind:
+  #of gkGraph: # Add the graphs
+  for graph in o.graphs:
       result.addGraph( graph )
 
-  of gkData:  # Add the data
-    for data in o.datas:
+  #of gkData:  # Add the data
+  for data in o.datas:
       result.addData( data )  
 
 proc `$`*(o:GraphMlObj):string =

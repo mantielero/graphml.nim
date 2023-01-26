@@ -4,10 +4,12 @@ import key,graph, common, xml
 import system
 
 
-proc newGraphMl*(isData:bool = false):GraphMlObj =
-  if isData:
-    return GraphMlObj(kind: gkData)
-  return GraphMlObj(kind: gkGraph)
+#proc newGraphMl*(isData:bool = false):GraphMlObj =
+proc newGraphMl*():GraphMlObj =  
+  #if isData:
+  #  return GraphMlObj(kind: gkData)
+  #return GraphMlObj(kind: gkGraph)
+  return GraphMlObj()
 
 method setDescription*(g: GraphMlObj; description: string ) =
   g.description = description
